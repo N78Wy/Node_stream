@@ -31,7 +31,6 @@ function testStream() {
   })
 }
 
-testStream()
 
 // 打印内存占用情况
 function printMemoryUsage (desc?: string) {

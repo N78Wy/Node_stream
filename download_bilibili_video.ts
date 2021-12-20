@@ -1,8 +1,6 @@
-import * as https from "https"
 import * as fs from "fs"
 import axios from "axios"
 import { Stream } from "stream"
-import { IncomingMessage } from "http"
 
 const headers: Record<string, string> = {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36",
@@ -60,4 +58,4 @@ async function downloadVideo(params: { bvid: string; qn: number }) {
   })
 }
 
-downloadVideo({ bvid: "BV1xx411c7mD", qn: 16 })
+downloadVideo({ bvid: "BV1xx411c7mD", qn: 80 })
