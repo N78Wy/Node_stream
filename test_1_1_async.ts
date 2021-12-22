@@ -3,12 +3,14 @@ import { Readable } from "stream"
 
 class NewReadable extends Readable {
   constructor() {
-    super()
+    super({ highWaterMark: 5 })
   }
-  _read(size: number): void {
-    setTimeout(() => {
-      this.push("xxxx")
-    }, 500);
+  async _read(size: number) {
+    await new Promise(res => {
+      setTimeout(res, 500)
+    })
+    
+    this.push("xxxx")
   }
 }
 const newReadable = new NewReadable()
