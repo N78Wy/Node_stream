@@ -8,7 +8,7 @@
       "name": "Dev",
       "type": "node",
       "request": "launch",
-      "args": ["${workspaceRoot}/test_2_2.ts"],
+      "args": ["${workspaceRoot}/test_1_3.ts"],
       "runtimeArgs": ["-r", "ts-node/register"],
       "sourceMaps": true,
       "cwd": "${workspaceRoot}",

@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@gz/user-service": "^2.1.0-beta.36.1",
     "axios": "^0.24.0",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.3"

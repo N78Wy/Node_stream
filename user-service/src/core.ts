@@ -1,0 +1,53 @@
+import { Context } from "./web";
+import { Application } from "./app";
+import { ILogger } from "./global";
+
+/**
+ * 核心基类
+ */
+export abstract class Core {
+  /** 请求上下文 */
+  protected ctx: Context | Application;
+  /** 日志记录 */
+  protected log!: ILogger;
+
+  constructor(ctx: Context) {
+    this.ctx = ctx;
+    this.log = ctx.log.child({ klass: this.constructor.name });
+  }
+}
+
+/** 生成类 */
+export type genConstructor<T> = new (ctx: any) => T;
+
+/** 核心生成类 */
+export abstract class CoreGen<T> {
+  protected cache: Map<symbol, T> = new Map();
+  protected ctx: any;
+  constructor(ctx: any) {
+    this.ctx = ctx;
+  }
+  /**
+   * 新建或者获取缓存示例
+   * @param key 缓存key
+   * @param ins 实例类
+   */
+  protected getCache<V extends T>(key: symbol, ins: genConstructor<V>) {
+    if (!this.cache.has(key)) {
+      this.cache.set(key, new ins(this.ctx));
+    }
+    return this.cache.get(key) as V;
+  }
+}
+
+/** 模型基类 */
+export abstract class BaseModel extends Core {}
+
+/** 路由基类 */
+export abstract class BaseRouter extends Core {}
+
+/** 控制器基类 */
+export abstract class BaseController extends Core {}
+
+/** 服务基类 */
+export abstract class BaseService extends Core {}
