@@ -11,6 +11,6 @@ class NewReadable extends Readable {
 }
 const newReadable = new NewReadable()
 
-setInterval(() => {
+// setInterval(() => {
   console.log(newReadable.read())
-}, 1000)
+// }, 1000)
